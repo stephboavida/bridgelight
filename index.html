@@ -47,20 +47,6 @@
         .tracking-wider { letter-spacing: 0.15em; }
         .tracking-widest { letter-spacing: 0.25em; }
 
-        /* Custom Cursor */
-        .cursor { position: fixed; width: 24px; height: 24px; pointer-events: none; z-index: 9999;
-                  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); transform: translate(-50%, -50%); }
-        .cursor::before { content: ''; position: absolute; top: 50%; left: 50%; width: 8px; height: 8px;
-                          background: #000; border-radius: 50%; transform: translate(-50%, -50%); transition: all 0.4s ease; }
-        .cursor::after { content: ''; position: absolute; top: 50%; left: 50%; width: 24px; height: 24px;
-                         border: 1px solid #000; border-radius: 50% 40% 60% 50%;
-                         transform: translate(-50%, -50%) rotate(0deg); transition: all 0.4s ease; opacity: 0.6; }
-        .cursor.hover::before { width: 4px; height: 4px; background: #8B7355; }
-        .cursor.hover::after { width: 48px; height: 48px; border-color: #8B7355; border-width: 1.5px;
-                               border-radius: 60% 40% 70% 30%; transform: translate(-50%, -50%) rotate(45deg); opacity: 0.8; }
-        .cursor.earth-mode::before { background: #8B7355; }
-        .cursor.earth-mode::after { border-color: #8B7355; border-radius: 40% 60% 50% 70%; transform: translate(-50%, -50%) rotate(15deg); }
-
         /* Loading Screen */
         .loading {
             position: fixed;
@@ -531,9 +517,6 @@
         <div class="loading-text">LOADING</div>
     </div>
 
-    <!-- Custom Cursor -->
-    <div class="cursor" id="cursor"></div>
-
     <!-- Hero -->
     <section class="hero">
         <div class="hero-logo">
@@ -588,7 +571,7 @@
             <h2 class="section-title">Houses & Chef's Counters</h2>
         </div>
         
-        <p class="text-emphasis">The Houses:<strong> "Unique properties as residential and training sites that prove the asset on the ground.</p> 
+        <p class="text-emphasis">The Houses:<strong> Unique properties as residential and training sites that prove the asset on the ground.</p> 
 <br>
         <p class="text-emphasis">Chef's Counters: Licensed bars in flagship locations that scale brand, cash flow and demand for syntropic-standard ingredients.</p>
     </section>
