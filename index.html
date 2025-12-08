@@ -3,50 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAUMEA – Bridge</title>
+    <title>HAUMEA – Vision</title>
 
     <!-- Preload critical images -->
     <link rel="preload" as="image" href="image6.jpg" fetchpriority="high">
     <link rel="preload" as="image" href="image7.jpg" fetchpriority="high">
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts - matching HAUMEA main site -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary-dark: #1a1613;
-            --secondary-dark: #2d2521;
-            --accent-gold: #b8986f;
-            --accent-bronze: #9d7f5f;
-            --text-primary: #1a1613;
-            --text-secondary: #5a4d3a;
-            --text-tertiary: #7d6f5c;
-            --bg-cream: #faf9f7;
-            --bg-sand: #f4f1ed;
-            --border-subtle: rgba(141, 115, 85, 0.15);
+            --color-earth: #2C2416;
+            --color-clay: #8B7355;
+            --color-sand: #C4B7A6;
+            --color-cream: #F5F1EB;
+            --color-moss: #4A5D4A;
+            --color-forest: #2D3B2D;
+            --color-gold: #B8976B;
+            --color-white: #FEFDFB;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            font-weight: 400;
+            font-family: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 300;
             line-height: 1.7;
-            color: var(--text-primary);
-            background: #fff;
-            cursor: none;
+            color: var(--color-earth);
+            background: var(--color-white);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Typography System */
-        .serif { font-family: 'Cormorant', 'Georgia', serif; }
-        .tracking-wide { letter-spacing: 0.05em; }
-        .tracking-wider { letter-spacing: 0.15em; }
-        .tracking-widest { letter-spacing: 0.25em; }
-
+        /* Grain overlay - matching HAUMEA */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
 
         /* Hero Section */
         .hero {
@@ -56,7 +60,6 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(to bottom, #fff 0%, var(--bg-cream) 100%);
             position: relative;
             padding: 0 60px;
         }
@@ -67,6 +70,7 @@
             margin-bottom: 60px;
             opacity: 0;
             animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+            color: var(--color-earth);
         }
         
         .hero-logo svg {
@@ -83,16 +87,18 @@
             margin-bottom: 40px;
             opacity: 0;
             animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
-            color: var(--primary-dark);
+            color: var(--color-earth);
         }
         
         .hero-subtitle {
-            font-family: 'Cormorant', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: clamp(18px, 2vw, 24px);
-            font-weight: 400;
-            color: var(--text-secondary);
-            letter-spacing: 0.05em;
-            margin-bottom: 20px;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--color-clay);
+            letter-spacing: 0.1em;
+            opacity: 0;
+            animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
         }
         
         @keyframes fadeInUp {
@@ -113,86 +119,73 @@
             background-size: cover;
             background-position: center;
             position: relative;
-            background-color: var(--bg-sand);
         }
 
         /* Content Blocks */
         .content-block {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 100px 80px;
+            padding: 120px 80px;
             text-align: center;
         }
         
         .content-block.compact {
-            padding: 70px 80px;
+            padding: 80px 80px;
         }
         
         .content-block.tight {
             padding: 60px 80px;
         }
 
-        /* Section Numbers - Minimalist */
+        /* Section Numbers */
         .section-wrapper {
-            margin-bottom: 80px;
+            margin-bottom: 60px;
         }
         
         .section-number {
-            font-family: 'Cormorant', serif;
-            font-size: clamp(50px, 6vw, 70px);
-            font-weight: 300;
-            color: #d4cec0;
-            letter-spacing: 0.02em;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(11px, 1.2vw, 13px);
+            font-weight: 400;
+            color: var(--color-gold);
+            letter-spacing: 0.4em;
             margin-bottom: 20px;
-            line-height: 1;
+            text-transform: uppercase;
         }
         
         .section-title {
-            font-size: clamp(12px, 1.3vw, 14px);
-            font-weight: 400;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--accent-bronze);
-            margin-bottom: 60px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 300;
+            color: var(--color-earth);
+            letter-spacing: 0.02em;
         }
 
         /* Text Styles */
         .text-display {
-            font-family: 'Cormorant', serif;
-            font-size: clamp(20px, 2.1vw, 28px);
-            font-weight: 400;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(24px, 2.8vw, 36px);
+            font-weight: 300;
             line-height: 1.5;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
+            color: var(--color-earth);
             letter-spacing: 0.02em;
         }
         
         .text-emphasis {
-            font-family: 'Cormorant', serif;
-            font-size: clamp(20px, 2.1vw, 28px);
-            font-weight: 400;
-            font-style: normal;
-            line-height: 1.6;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(20px, 2.2vw, 28px);
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--color-earth);
             letter-spacing: 0.02em;
         }
         
-        .text-emphasis strong {
-            font-weight: 500;
-        }
-        
         .text-body {
-            font-family: 'Cormorant', serif;
-            font-size: clamp(16px, 1.6vw, 19px);
-            font-weight: 400;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            margin-bottom: 28px;
-        }
-        
-        .text-body:last-child {
-            margin-bottom: 0;
+            font-family: 'Jost', sans-serif;
+            font-size: clamp(15px, 1.4vw, 17px);
+            font-weight: 300;
+            line-height: 2;
+            color: var(--color-clay);
+            margin-top: 30px;
         }
 
         /* Divider */
@@ -205,7 +198,7 @@
         .divider-line {
             width: 100%;
             height: 1px;
-            background: var(--border-subtle);
+            background: var(--color-sand);
             position: relative;
         }
         
@@ -215,10 +208,10 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 4px;
-            height: 4px;
-            background: var(--accent-bronze);
-            border-radius: 50%;
+            width: 6px;
+            height: 6px;
+            background: var(--color-gold);
+            transform: translate(-50%, -50%) rotate(45deg);
         }
 
         /* Square Section */
@@ -226,7 +219,6 @@
             display: flex;
             align-items: center;
             min-height: 80vh;
-            background: var(--bg-cream);
         }
         
         .square-image {
@@ -234,12 +226,11 @@
             padding-bottom: 50%;
             background-size: cover;
             background-position: center;
-            background-color: var(--bg-sand);
         }
         
         .square-content {
             flex: 1;
-            padding: 80px 120px;
+            padding: 80px 100px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -247,22 +238,21 @@
         
         .square-content .text-emphasis {
             margin: 0;
-            max-width: 460px;
+            max-width: 420px;
         }
 
         /* Double Image Section */
         .double-image-section {
             display: flex;
-            max-width: 1600px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 80px;
-            gap: 60px;
+            gap: 40px;
         }
         
         .double-image {
             flex: 1;
-            height: 520px;
-            background-color: var(--bg-sand);
+            height: 480px;
             overflow: hidden;
         }
         
@@ -278,47 +268,27 @@
             display: block;
             object-fit: cover;
             object-position: center;
-            transform: translateZ(0);
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .double-image:hover .double-image-img {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
         /* Call to Action Section */
         .cta-section {
-            background: #fff;
             padding: 120px 80px 100px;
             text-align: center;
         }
         
-        .cta-title {
-            font-size: clamp(12px, 1.3vw, 14px);
-            font-weight: 400;
-            color: var(--accent-bronze);
-            margin-bottom: 30px;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-        }
-        
-        .cta-subtitle {
-            font-family: 'Cormorant', serif;
-            font-size: clamp(22px, 2.5vw, 32px);
-            font-weight: 400;
-            color: var(--text-primary);
-            margin-bottom: 20px;
-            letter-spacing: 0.02em;
-            line-height: 1.3;
-        }
-        
         .cta-text {
-            font-family: 'Cormorant', serif;
-            font-size: clamp(18px, 1.8vw, 22px);
-            color: var(--text-secondary);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(20px, 2.2vw, 28px);
+            font-weight: 300;
+            color: var(--color-earth);
             margin-bottom: 50px;
             line-height: 1.6;
-            letter-spacing: 0.01em;
+            letter-spacing: 0.02em;
         }
 
         /* Navigation Pills */
@@ -331,54 +301,34 @@
         
         .pill {
             padding: 18px 48px;
-            border: 1px solid var(--accent-bronze);
-            color: var(--accent-bronze);
+            border: 1px solid var(--color-gold);
+            color: var(--color-gold);
             text-decoration: none;
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 0.15em;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s ease;
             background: transparent;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .pill::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--accent-bronze);
-            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: -1;
         }
         
         .pill:hover {
-            color: #fff;
-            border-color: var(--accent-bronze);
-        }
-        
-        .pill:hover::before {
-            left: 0;
+            background: var(--color-gold);
+            color: var(--color-white);
         }
 
         /* Footer */
         .footer {
-            background: #f5f3f0;
-            color: #5a4d3a;
-            padding: 80px 60px;
+            padding: 60px;
             text-align: center;
         }
         
-        .footer h2 {
+        .footer-text {
+            font-family: 'Cormorant Garamond', serif;
             font-size: 14px;
-            font-weight: 400;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 0;
+            font-style: italic;
+            color: var(--color-clay);
+            letter-spacing: 0.05em;
         }
 
         /* Responsive */
@@ -386,21 +336,9 @@
             .square-content {
                 padding: 60px 80px;
             }
-            
-            .double-image-section {
-                gap: 40px;
-            }
         }
 
         @media (max-width: 768px) {
-            body {
-                cursor: auto;
-            }
-            
-            .cursor {
-                display: none;
-            }
-
             .hero {
                 padding: 0 40px;
             }
@@ -412,19 +350,19 @@
             }
 
             .content-block {
-                padding: 100px 40px;
-            }
-            
-            .content-block.compact {
                 padding: 80px 40px;
             }
             
-            .content-block.tight {
+            .content-block.compact {
                 padding: 60px 40px;
+            }
+            
+            .content-block.tight {
+                padding: 50px 40px;
             }
 
             .divider {
-                padding: 80px 0;
+                padding: 60px 0;
                 max-width: 120px;
             }
 
@@ -445,15 +383,15 @@
             .double-image-section {
                 flex-direction: column;
                 padding: 0 40px;
-                gap: 30px;
+                gap: 20px;
             }
             
             .double-image {
-                height: 360px;
+                height: 320px;
             }
 
             .full-image {
-                height: 60vh;
+                height: 50vh;
             }
 
             .cta-section {
@@ -474,18 +412,17 @@
             }
 
             .footer {
-                padding: 80px 40px;
+                padding: 50px 40px;
             }
         }
 
         ::selection {
-            background: var(--accent-bronze);
-            color: #fff;
+            background: var(--color-gold);
+            color: var(--color-white);
         }
     </style>
 </head>
 <body>
-
 
     <!-- Hero -->
     <section class="hero">
@@ -496,54 +433,49 @@
             </svg>
         </div>
         <h1 class="hero-title">HAUMEA</h1>
-        <p class="hero-subtitle tracking-wider">Where land becomes legacy</p>
+        <p class="hero-subtitle">Come home to creation</p>
     </section>
 
     <!-- Image 1 -->
     <div class="full-image" style="background-image: url('image1.jpg');"></div>
 
-    <!-- Content Block -->
-    <section class="content-block compact">
-        <p class="text-display">Generating wealth from healthy soil.</p>
+    <!-- Opening Statement -->
+    <section class="content-block">
+        <p class="text-display">Ernst Götsch spent forty years proving that abundance comes from cooperation with living systems, not extraction from them.</p>
+        <p class="text-body">HAUMEA exists to carry this proof forward — building places where regenerative land becomes a recognisable asset class, and where healthy soil generates lasting wealth.</p>
     </section>
 
     <!-- Image 2 -->
     <div class="full-image" style="background-image: url('image2.jpg');"></div>
-
-    <!-- Content Block -->
-    <section class="content-block tight">
-        <p class="text-display">Creating the world’s most desirable asset.<br> 
-            <p>The gold standard of regenerative land.</p>
-    </section>
 
     <!-- Divider -->
     <div class="divider">
         <div class="divider-line"></div>
     </div>
     
-    <!-- ONE: Syntropic Agroforestry -->
+    <!-- ONE: The Method -->
     <section class="content-block">
         <div class="section-wrapper">
-            <div class="section-number">ONE</div>
-            <h2 class="section-title">Syntropic Agroforestry</h2>
+            <div class="section-number">One</div>
+            <h2 class="section-title">The Method</h2>
         </div>
         
-        <p class="text-emphasis">Götsch's Syntropic Agroforestry – regenerative systems that compound ecological and asset value over time.</strong></p>
+        <p class="text-emphasis">Syntropic Agroforestry — Götsch's life work — creates food forests that regenerate soil, sequester carbon, and increase in ecological and financial value over time.</p>
+        <p class="text-body">Unlike conventional agriculture that depletes, these systems compound. Each season builds on the last. The land grows richer, more productive, more valuable.</p>
     </section>
 
     <!-- Image 4 -->
     <div class="full-image" style="background-image: url('image4.jpg');"></div>
 
-    <!-- TWO: Houses & Chef's Counters -->
+    <!-- TWO: The Properties -->
     <section class="content-block">
         <div class="section-wrapper">
-            <div class="section-number">TWO</div>
-            <h2 class="section-title">Houses & Chef's Counters</h2>
+            <div class="section-number">Two</div>
+            <h2 class="section-title">The Properties</h2>
         </div>
         
-        <p class="text-emphasis">The Houses:<strong> Unique properties as residential and training sites that prove the asset on the ground.</p> 
-<br>
-        <p class="text-emphasis">Chef's Counters: Licensed bars in flagship locations that scale brand, cash flow and demand for syntropic-standard ingredients.</p>
+        <p class="text-emphasis">Each HAUMEA property is a proof point — architecture and agriculture designed together, demonstrating what Götsch-grade land looks like when it's built to last.</p>
+        <p class="text-body">These are not retreats or escapes. They are working landscapes: residences for creators, training grounds for practitioners, and living evidence that regenerative real estate belongs in serious portfolios.</p>
     </section>
 
     <!-- Image 3 -->
@@ -554,14 +486,14 @@
         <div class="divider-line"></div>
     </div>
 
-    <!-- THREE: Signature Ingredients -->
+    <!-- THREE: The Ingredients -->
     <section class="content-block">
         <div class="section-wrapper">
-            <div class="section-number">THREE</div>
-            <h2 class="section-title">Signature Ingredients</h2>
+            <div class="section-number">Three</div>
+            <h2 class="section-title">The Ingredients</h2>
         </div>
         
-        <p class="text-emphasis"><strong>Premium vitality.</strong> Tree to table.</p>
+        <p class="text-emphasis">What grows in a syntropic system carries something different — vitality you can taste. Tree to table, forest to kitchen.</p>
     </section>
 
     <!-- Image 5 -->
@@ -569,24 +501,24 @@
 
     <!-- Content Block -->
     <section class="content-block tight">
-        <p class="text-emphasis">Where forest wisdom becomes premium nourishment.</p>
+        <p class="text-emphasis">Premium produce from land that heals itself. Signature ingredients that connect people to the source.</p>
     </section>
     
     <!-- Images 6 & 7 -->
     <div class="double-image-section">
         <div class="double-image">
             <figure>
-                <img class="double-image-img" src="image6.jpg" alt="Açaí cultivation" width="1600" height="1200" loading="eager" decoding="async" fetchpriority="high">
+                <img class="double-image-img" src="image6.jpg" alt="Syntropic cultivation" width="1600" height="1200" loading="eager" decoding="async" fetchpriority="high">
             </figure>
         </div>
         <div class="double-image">
             <figure>
-                <img class="double-image-img" src="image7.jpg" alt="Açaí harvest" width="1600" height="1200" loading="eager" decoding="async" fetchpriority="high">
+                <img class="double-image-img" src="image7.jpg" alt="Forest harvest" width="1600" height="1200" loading="eager" decoding="async" fetchpriority="high">
             </figure>
         </div>
     </div>
 
-    <!-- Content Block -->
+    <!-- Spacer -->
     <section class="content-block compact">
     </section>
 
@@ -594,9 +526,9 @@
     <section class="square-section">
         <div class="square-content">
             <p class="text-emphasis">
-                <strong>Systems that endure.<br>
-                Quality that scales.</strong><br><br>
-                Holding the line on beauty and rigour. 
+                Systems that endure.<br>
+                Quality that compounds.<br><br>
+                Where land becomes legacy.
             </p>
         </div>
         <div class="square-image" style="background-image: url('image9.jpg');"></div>
@@ -604,58 +536,18 @@
 
     <!-- Call to Action -->
     <section class="cta-section">
-        <p class="cta-text">Support the foundation that endures.</p>
+        <p class="cta-text">Join us in building the foundation that endures.</p>
         
-     <div class="nav-pills">
-            <a href="https://calendly.com/steph_boavida/30min" target="_blank" class="pill">Connect</a>
+        <div class="nav-pills">
+            <a href="index.html" class="pill">Explore Properties</a>
+            <a href="https://haumea-invest.vercel.app/" class="pill">Connect</a>
         </div>
     </section>
     
     <!-- Footer -->
     <footer class="footer">
+        <p class="footer-text">A symbol of life's continual regeneration</p>
     </footer>
 
-    <script>
-        // Loading screen
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                document.getElementById('loading').classList.add('fade-out');
-            }, 1800);
-        });
-        
-        if (document.readyState !== 'loading') {
-            setTimeout(() => {
-                document.getElementById('loading').classList.add('fade-out');
-            }, 1800);
-        }
-
-        // Custom cursor
-        const cursor = document.getElementById('cursor');
-        const interactiveElements = document.querySelectorAll('a, .pill');
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
-
-        // Earth mode cursor on scroll
-        let scrollTimeout;
-        window.addEventListener('scroll', () => {
-            cursor.classList.add('earth-mode');
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => cursor.classList.remove('earth-mode'), 150);
-        });
-    </script>
-    <noscript>
-        <div style="padding:0 40px;">
-            <img src="image6.jpg" alt="Açaí cultivation" style="width:100%;height:auto;display:block;margin:20px 0;">
-            <img src="image7.jpg" alt="Açaí harvest" style="width:100%;height:auto;display:block;margin:20px 0;">
-        </div>
-    </noscript>
 </body>
 </html>
