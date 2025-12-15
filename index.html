@@ -52,6 +52,211 @@
             z-index: 1000;
         }
 
+        /* Investment Button */
+        .investment-button {
+            position: fixed;
+            top: 40px;
+            right: 60px;
+            padding: 14px 36px;
+            border: 1px solid var(--color-gold);
+            background: transparent;
+            color: var(--color-gold);
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            z-index: 100;
+            font-family: 'Jost', sans-serif;
+        }
+        
+        .investment-button:hover {
+            background: var(--color-gold);
+            color: var(--color-white);
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 36, 22, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background: var(--color-white);
+            max-width: 700px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 80px 60px 60px;
+            transform: translateY(30px);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        /* Close Button */
+        .modal-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            padding: 0;
+            color: var(--color-clay);
+            transition: color 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            color: var(--color-earth);
+        }
+        
+        .modal-close::before,
+        .modal-close::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 1px;
+            background: currentColor;
+        }
+        
+        .modal-close::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        
+        .modal-close::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        /* Modal Typography */
+        .modal-header {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        .modal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(32px, 4vw, 42px);
+            font-weight: 300;
+            color: var(--color-earth);
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+        }
+        
+        .modal-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--color-clay);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        /* Modal Sections */
+        .modal-section {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--color-sand);
+        }
+        
+        .modal-section:last-of-type {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .modal-section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--color-gold);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        
+        .modal-text {
+            font-family: 'Jost', sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 1.9;
+            color: var(--color-earth);
+            margin-bottom: 16px;
+        }
+        
+        .modal-text:last-child {
+            margin-bottom: 0;
+        }
+        
+        .modal-text strong {
+            font-weight: 400;
+            color: var(--color-earth);
+        }
+
+        /* Modal List */
+        .modal-list {
+            list-style: none;
+            margin-top: 16px;
+        }
+        
+        .modal-list li {
+            font-family: 'Jost', sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 1.9;
+            color: var(--color-earth);
+            padding-left: 24px;
+            position: relative;
+            margin-bottom: 12px;
+        }
+        
+        .modal-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 13px;
+            width: 4px;
+            height: 4px;
+            background: var(--color-gold);
+            transform: rotate(45deg);
+        }
+
+        /* Modal Note */
+        .modal-note {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid var(--color-sand);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            font-style: italic;
+            line-height: 1.8;
+            color: var(--color-clay);
+        }
+
         /* Hero Section */
         .hero {
             height: 100vh;
@@ -180,12 +385,12 @@
         }
         
         .text-body {
-    font-family: 'Jost', sans-serif;
-    font-size: clamp(16px, 1.5vw, 18px);
-    font-weight: 400;  /* up from 300 */
-    line-height: 2;
-    color: var(--color-earth);  /* darker, from clay */
-    margin-top: 30px;
+            font-family: 'Jost', sans-serif;
+            font-size: clamp(16px, 1.5vw, 18px);
+            font-weight: 400;
+            line-height: 2;
+            color: var(--color-earth);
+            margin-top: 30px;
         }
 
         /* Divider */
@@ -336,6 +541,12 @@
             .square-content {
                 padding: 60px 80px;
             }
+            
+            .investment-button {
+                top: 30px;
+                right: 40px;
+                padding: 12px 30px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -414,6 +625,23 @@
             .footer {
                 padding: 50px 40px;
             }
+            
+            .investment-button {
+                top: 20px;
+                right: 20px;
+                padding: 10px 24px;
+                font-size: 10px;
+            }
+            
+            .modal-content {
+                padding: 60px 30px 40px;
+                width: 95%;
+            }
+            
+            .modal-close {
+                top: 20px;
+                right: 20px;
+            }
         }
 
         ::selection {
@@ -423,6 +651,57 @@
     </style>
 </head>
 <body>
+
+    <!-- Investment Button -->
+    <button class="investment-button" onclick="openModal()">Bridge Round</button>
+
+    <!-- Investment Modal -->
+    <div class="modal-overlay" id="investmentModal" onclick="closeModalOnOutsideClick(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()" aria-label="Close"></button>
+            
+            <div class="modal-header">
+                <h2 class="modal-title">Bridge Round</h2>
+                <p class="modal-subtitle">£500,000 | Close: December 2025</p>
+            </div>
+
+            <div class="modal-section">
+                <h3 class="modal-section-title">Structure</h3>
+                <ul class="modal-list">
+                    <li>Pre-valuation bridge capital</li>
+                    <li>Converts at 20% discount on 2026 Seed Round</li>
+                    <li>Auto-converts at £2.5m pre-money if no Seed Round by December 2026</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3 class="modal-section-title">Minimum Ticket</h3>
+                <p class="modal-text">£250,000</p>
+            </div>
+
+            <div class="modal-section">
+                <h3 class="modal-section-title">What You're Backing</h3>
+                <p class="modal-text">Twelve months to build a real consulting business:</p>
+                <ul class="modal-list">
+                    <li>Hire Co-Founder and Head of Tech for system scaling</li>
+                    <li>Sign three partnership projects generating £200k+ revenue</li>
+                    <li>Build case studies and proof of concept</li>
+                    <li>Position for £750k–£1m Seed Round in Q3/Q4 2026</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3 class="modal-section-title">Your Return</h3>
+                <ul class="modal-list">
+                    <li>20% discount versus Seed Round investors</li>
+                    <li>Early entry before market sets valuation</li>
+                    <li>Optionality: If we succeed, you win. If we pivot, you're in at the ground floor.</li>
+                </ul>
+            </div>
+
+            <p class="modal-note">UK taxpayers may be eligible for SEIS structure with 50% tax relief, subject to allocation availability. Inquire for details.</p>
+        </div>
+    </div>
 
     <!-- Hero -->
     <section class="hero">
@@ -547,6 +826,33 @@
     <footer class="footer">
         <p class="footer-text">A symbol of life's continual regeneration</p>
     </footer>
+
+    <script>
+        function openModal() {
+            const modal = document.getElementById('investmentModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('investmentModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeModalOnOutsideClick(event) {
+            if (event.target === event.currentTarget) {
+                closeModal();
+            }
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
 
 </body>
 </html>
